@@ -46,3 +46,27 @@ kits.getId = function(){
   let id = time + '' + r;
   return id;
 }
+
+//获取随机十六进制的颜色
+kits.randomHexColor = function () {
+  let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+  let randomHexColor = '#';
+  for (let i = 0; i < 6; i++) {
+    let temp = Math.floor(Math.random() * arr.length);
+    randomHexColor += arr[temp];
+  }
+  return randomHexColor;
+}
+
+
+//获取随机rgb颜色
+kits. randomRGBColor = function(){
+  let arr = [];
+  for (let i = 0; i < 3; i++){
+    let temp = Math.floor(Math.random() * 256);
+    arr.push(temp);
+  }
+  let str = arr.join(',');
+  let randomRGBColor = 'rgb('+str+')';
+  return randomRGBColor;
+}
