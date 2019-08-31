@@ -70,3 +70,27 @@ kits. randomRGBColor = function(){
   let randomRGBColor = 'rgb('+str+')';
   return randomRGBColor;
 }
+
+kits.getLocalDataArray = function (key) {
+  let json = localStorage.getItem(key);
+  let arr = JSON.parse(json);
+  return arr = arr || [];
+}
+
+
+kits.saveLocalDataArray = function (key, arr) {
+  let json = JSON.stringify(arr);
+  localStorage.setItem(key, json);
+}
+
+kits.modifyLocalDataById = function (key, id, data) {
+  let arr = kits.getLocalDataArray(key);
+  arr.forEach((e, i) => {
+    if (e.id == id) {
+      // console.log(e);
+      arr[i] = data;
+    }
+  })
+  // 存储修改后的数据
+  kits.saveLocalDataArray(key, arr);
+}
